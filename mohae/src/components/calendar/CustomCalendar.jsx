@@ -50,7 +50,7 @@ const CustomCalendar = () => {
       endDate = startDate;
     }
 
-    // 시작 날짜를 하루 적은 날짜로 설정
+    // 시작날짜를 하루 안빼면 이상해지더라고요.. 나중에 고칠게요
     startDate.setDate(startDate.getDate() - 1);
 
     const eventColor = categories.find(cat => cat.name === newEventCategory)?.color || color;
@@ -180,12 +180,6 @@ const CustomCalendar = () => {
             <S.CloseButton onClick={CloseDetails}>X</S.CloseButton>
             <button onClick={() => setShowEmojiForm(!showEmojiForm)}>+</button>
             <h2>{`${selectedDate.getFullYear()}년 ${selectedDate.getMonth() + 1}월 ${selectedDate.getDate()}일`}</h2>
-            <div>
-              <strong>시작 날짜:</strong> {selectedEvent.start.toLocaleDateString()}
-            </div>
-            <div>
-              <strong>종료 날짜:</strong> {selectedEvent.end.toLocaleDateString()}
-            </div>
             <div style={{ backgroundColor: selectedEvent.color }}>
               {selectedEvent.category ? `${selectedEvent.category} : ` : ''} {selectedEvent.title || '이벤트 없음'}
             </div>
@@ -327,7 +321,7 @@ const CustomCalendar = () => {
                       ))}
                     </select>
                   </>
-                )}
+                )}  
               </div>
               <S.AddButton onClick={addEvent}>추가</S.AddButton>
             </S.FormContent>
@@ -341,4 +335,3 @@ const CustomCalendar = () => {
 export default CustomCalendar;
 
 
- // 왜인지 모르겠지만 시작날짜로 하면 로직상 이상해요..
